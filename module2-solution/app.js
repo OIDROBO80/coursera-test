@@ -47,8 +47,7 @@ function ShoppingListCheckOffService() {
   },{
     name: 'cereal',
     quantity: 9
-  },
-  ,{
+  },{
     name: 'bread',
     quantity: 3
   },{
