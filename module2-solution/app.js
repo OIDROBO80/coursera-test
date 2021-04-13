@@ -47,6 +47,16 @@ function ShoppingListCheckOffService() {
   },{
     name: 'cereal',
     quantity: 9
+  },
+  ,{
+    name: 'bread',
+    quantity: 3
+  },{
+    name: 'apple',
+    quantity: 10
+  },{
+    name: 'meal',
+    quantity: 8
   }];
   var lengthToBuy=toBuy.length;
   var bought = [];
