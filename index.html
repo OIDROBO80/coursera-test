@@ -1,18 +1,59 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" ng-app='ShoppingListCheckOff'>
   <head>
-    <meta charset="utf-8">
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="angular.min.js"></script>
     <script src="app.js"></script>
-    <style>body { font-size: 1.5em; }</style>
-    <title>Lecture 02 - Single Page Web Applications with AngularJS</title>
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
   </head>
-  <body>
-    <h1>Low Cohesion and Tight Coupling</h1>
-    <div id="nameCalculator">
-      <div>
-        Your name: <input type="text" id="name">
-      </div>
-      <div id="output"></div>
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-6" id="ToBuyController" ng-controller='ToBuyController as listToBuy'>
+     <h2>To Buy:</h2>
+     <ul>
+      <li ng-repeat="item in listToBuy.items">
+        {{ item.quantity }} of {{ item.name }}
+        <button ng-click="listToBuy.buy($index);" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span>Bought</button>
+      </li>
+     </ul>
+     <div ng-if="listToBuy.Empty()" class="emptyMessage">Everything is bought!</div>
     </div>
-  </body>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6" id="AlreadyBoughtController" ng-controller='AlreadyBoughtController as listBought'>
+     <h2>Already Bought:</h2>
+     <ul>
+      <li ng-repeat="item in listBought.items">
+        {{ item.quantity }} of {{ item.name }}
+      </li>
+    </ul>
+     <div ng-if="listBought.Empty()" class="emptyMessage">Nothing bought yet.</div>
+    </div>
+  </div>
+</div>
+
+</body>
 </html>
