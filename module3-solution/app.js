@@ -29,6 +29,7 @@
       var menu = this;
       menu.searchTerm = "";
       menu.items= "";
+      menu.exist=false;
       menu.getMenuCategories =  function () {
         console.log('check boton');
         var promise=  MenuSearchService.getMatchedMenuItems(menu.searchTerm);
@@ -52,9 +53,9 @@
             var list=result.data.menu_items;
             console.log('length of menu', list.length)
             list.forEach(element => {
-                var name = element.name;
+                var description = element.description;
                 //console.log('name of plate',name)
-                if (name.toLowerCase().indexOf(searchTerm) !== -1) {
+                if (description.toLowerCase().indexOf(searchTerm) !== -1) {
                    foundItems.push(element);
                 }
             });

@@ -1,14 +1,16 @@
 
-<div>
+<div >
     <br>
+    <div class="error" ng-if="menu.exist">Nothing found</div>
     <table style="width:100%">
         <tr ng-repeat="item in menu.items">
           <td>{{ item.name }} </td>
           <td>{{ item.short_name }}</td>
-          <td><button ng-click="menu.onRemove({index: $index});">Remove Item</button></td>
+          <td>{{ item.description }}</td>
+          <td><button ng-click="menu.onRemove({index: $index});">Don't want this one!</button></td>
         </tr>
     </table> 
-    <div class="error" ng-if="menu.cookiesInList()">WARNING! WARNING! COOKIES DETECTED!</div>
+   
 </div>
 
   
