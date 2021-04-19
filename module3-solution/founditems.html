@@ -1,7 +1,6 @@
 
 <div >
     <br>
-    <div class="error" ng-if="menu.exist">Nothing found</div>
     <table style="width:100%">
         <tr ng-repeat="item in menu.items">
           <td>{{ item.name }} </td>
@@ -10,7 +9,8 @@
           <td><button ng-click="menu.onRemove({index: $index});">Don't want this one!</button></td>
         </tr>
     </table> 
-   
+    <br>
+    <div class="error" ng-if="!menu.foundMenu()">Nothing found</div>
 </div>
 
   

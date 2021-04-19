@@ -29,11 +29,22 @@
       var menu = this;
       menu.searchTerm = "";
       menu.items= "";
-      menu.exist=false;
       menu.getMenuCategories =  function () {
         console.log('check boton');
         var promise=  MenuSearchService.getMatchedMenuItems(menu.searchTerm);
         promise.then(function(result){menu.items=result;});
+      };
+      menu.removeItem = function (itemIndex) {
+        //console.log("'this' is: ", this);
+        //this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
+        console.log("'the item will be remove ", menu.items[itemIndex]);
+        menu.items.splice(itemIndex, 1);
+      };
+      menu.foundMenu = function () {
+        if(menu.items.length>0)
+        { return true; }
+        else
+        { return false; }
       };
        
     }
@@ -52,13 +63,18 @@
             var foundItems=[];
             var list=result.data.menu_items;
             console.log('length of menu', list.length)
-            list.forEach(element => {
+            if(searchTerm)
+            {
+              list.forEach(element => {
                 var description = element.description;
                 //console.log('name of plate',name)
                 if (description.toLowerCase().indexOf(searchTerm) !== -1) {
                    foundItems.push(element);
                 }
             });
+
+            }
+            
             console.log('were found ',foundItems.length,'plates with word ',searchTerm)
             return foundItems;
         })
