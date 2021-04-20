@@ -1,0 +1,16 @@
+
+<div >
+    <br>
+    <table style="width:100%">
+        <tr ng-repeat="item in menu.items">
+          <td>{{ item.name }} </td>
+          <td>{{ item.short_name }}</td>
+          <td>{{ item.description }}</td>
+          <td><button ng-click="menu.onRemove({index: $index});">Don't want this one!</button></td>
+        </tr>
+    </table> 
+    <br>
+    <div class="error" ng-if="!menu.foundMenu()">Nothing found</div>
+</div>
+
+  
